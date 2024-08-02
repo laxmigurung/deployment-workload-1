@@ -25,56 +25,24 @@
 <img width="1506" alt="Screenshot 2024-07-27 at 11 14 21 PM" src="https://github.com/user-attachments/assets/cd4ddebc-1e78-48a2-a5d5-a294d62adb67">
 
 
-7. After successfully completing the build (provide screenshot of successful build in documentation), download the contents of the repository (the one in your personal GitHub NOT the kuralabs repo!) and upload a zip file of the application it to AWS Elastic Beanstalk.
+
+
+Now, we use Elastic BeanStalk to deploy our application and make it live. Based on my understanding this is an infrastructure as a service as it provides services like monitoring, and autoscaling for the application.
+Created two IAM roles. These IAM roles allow trusted identities to perform actions in AWS by assigning specific permissions to the services that are required to automate the application. It is trying to connect to our EC2 instance and the Beanstalk. 
   
-	a. First, follow the instructions in this [LINK](https://scribehow.com/shared/How_to_Create_an_AWS_IAM_Role_for_Elastic_Beanstalk_and_EC2__kTg4B7zRRxCp-aYTJc-WLg) for "How to Create an AWS IAM Role for Elastic Beanstalk and EC2" and create the two IAM roles as specified.
-
-    b. Navigate to the AWS Elastic Beanstalk console page
-
-    c. Navigate to the "Environments" page on the left side menu and click on "Create Environment"
-
-    d. Create a "Web server environment" and enter the an Application name (Environment name should auto populate after that)
-
-    e. Choose "Python 3.7" as the "Managed platform"
-
-    f. "Upload your code" by choosing a "local file" and select the zipped application files you created earlier.
-
-    g. Under "Presets", make sure that "Single instance (free tier eligible) is selected and then click "Next"
-
-    h. Select the "Service role" and "EC2 profile" in the appropriate drop down menus and then click "Next"
-
-    i. Select the default VPC and Subnet "us-east-1a" and then click "Next"
-
-    j. Select "General Purpose (SSD) for "Root volume type" and assign it 10 GB.
-
-    k. Ensure that "Single instance" is selected for the "Environment type" and that ONLY "t3.micro" is selected for instance types (remove all others if present) and then click "Next"
-
-    l. Select 'BASIC' health reporting under the monitoring section. NOT "ENHANCED"!
-
-    m. Continue to the "Review" page and then click "Submit".
-
-    n. When the "environment is successfully launched", click on the link provided in the "Domain" and confirm that the application has deployed!
-
-8. Document! All projects have documentation so that others can read and understand what was done and how it was done. Create a README.md file in your repository that describes:
-
-	a. The "PURPOSE" of the Workload, 
 	
-	b. The "STEPS" taken (and why each was necessary/important, 
-	
-	c. A "SYSTEM DESIGN DIAGRAM" that is created in draw.io, 
-	
-	d. "ISSUES/TROUBLESHOOTING" that may or may have occured, 
-	
-	e. An "OPTIMIZATION" section for that answers the question: What are the benefits of using managed services for cloud infrastructure?  What are some issues that a retail bank would face choosing this method of deployment and how would you address/resolve them? What are other disadvantages of using elastic beanstalk or similar managed services for deploying applications?
-	
-	f. A "CONCLUSION" statement as well as any other sections you feel like you want to include.
-
-The README.md is a markdown file that has unique formatting.  Be sure to look up how to write in markdown or use a txt to markdown converter. 
-
+    
 
 <img width="1506" alt="Screenshot 2024-07-28 at 12 42 49 AM" src="https://github.com/user-attachments/assets/6271bf7b-3d76-44a9-a9a6-f884181c3d0e">
 
 
 
+System Design Diagram
 
 
+<img width="1117" alt="Screenshot 2024-08-01 at 11 36 17 PM" src="https://github.com/user-attachments/assets/3463af3f-5392-4fe4-9d2b-822fead4bbf1">
+
+Based on my understanding
+1. Jenkins helps to build the bins and libraries required for the application. It performs checks, and testing in the application folder with all the modules and determines if it is ready to be deployed or not.
+2. Elastic Beanstalk provides an infra where our application is running using all the compute resources from the EC2 instance that it is connected to. 
+In terms of scalability, I noticed how it keeps our application running and it has the ability to autoscale. By this when we have many client requests coming, this will autoscale to provide the users to send requests and use our app. But we also set the CPU usage to 10G, which means if it reaches the max limit, it will crash may be. 
