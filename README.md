@@ -1,21 +1,15 @@
 # Kura Labs Cohort 5- Deployment Workload 1
 ## Intro to CI/CD
+### Laxmi's Banking Application
 
-Welcome to Deployment Workload 1!  By now you’ve learned about system designs and the CI/CD Pipeline.  Let’s start putting it all together and see it in action.  
+1. Cloned the repository from the Kura Labs repository to my repository. I ran into a few issues when I ran 'git push'.
+   - Permission denied and 403 Error when I tried to put my credentials from local.
+   - created a new token in Git Hub, and set the expiration date to December 2025. I used this token to connect to the origin and successfully 
 
-Be sure to document each step in the process and explain WHY each step is important to the pipeline.
-
-## Instructions
-
-1. Clone this repository to your GitHub account
-2. Create an EC2
-
-	a. Follow document: [AWS EC2 Quickstart Guide](https://github.com/kura-labs-org/AWS-EC2-Quick-Start-Guide/blob/main/AWS%20EC2%20Quick%20Start%20Guide.pdf) if needed
-3. Install Jenkins onto the EC2
-
-	a. Connect to the EC2 terminal
-
- 	b. Enter the following commands to install Jenkins:
+2. Now I created an EC2 instance to run the application.
+   We need to install jenkins with all the required configurations to run this application in the EC2. Jenkins is an open-source automation server. This helped me to build my application. By looking into the console logs, I understood that Jenkins was building the package and checking if all the required bins and libraries for my application to run were set for a successful run.
+   1. 
+   
 
 ```
     $sudo apt update && sudo apt install fontconfig openjdk-17-jre software-properties-common && sudo add-apt-repository ppa:deadsnakes/ppa && sudo apt install python3.7 python3.7-venv
@@ -28,57 +22,8 @@ Be sure to document each step in the process and explain WHY each step is import
 
 ```
 
-If successful, the last command should show the Jenkins service “active (running)”
+<img width="1506" alt="Screenshot 2024-07-27 at 11 14 21 PM" src="https://github.com/user-attachments/assets/cd4ddebc-1e78-48a2-a5d5-a294d62adb67">
 
-4. Log into Jenkins
-
-	a. Enter initial admin password
-
-	b. Install suggested plugins
-
-	c. Create first admin user
-
-5. Create a Multi-Branch pipeline
-
-	a. Click on “New Item” in the menu on the left of the page
-
-	b. Enter a name for your pipeline
-  
-    c. Select “Multibranch Pipeline”
-  
-    d. Under “Branch Sources”, click “Add source” and select “GitHub”
-  
-    e. Click “+ Add” and select “Jenkins”
-  
-    f. Make sure “Kind” reads “Username and password”
-
-    g. Under “Username”, enter your GitHub username
-
-    h. Under “Password” ,enter your GitHub personal access token
-
-To get the GitHub personal access token, first log into GitHub and click on your profile icon on the top right of the page.
-
-i. On the dropdown menu, click on “Settings”
-
-ii. Click on “<> Developer settings at the bottom of the menu on the left of the page
-
-iii. Click on “Personal access tokens” on the menu on the left of the page and select “Tokens (classic)”
-
-iv. Click “Generate new token” and select the classic option
-
-v. Set an expiration date and then select the following "scopes": repo, admin:repo_hook
-
-This token can only be viewed ONCE! Make sure you enter the token properly (or save it) before leaving the page otherwise a new token must be generated!
-
-6. Connect GitHub repository to Jenkins
-
-	a. Enter the repository HTTPS URL and click "Validate"
-  
-	b. Make sure that the "Build Configuration" section says "Mode: by Jenkinsfile" and "Script Path: Jenkinsfile"
-  
-	c. Click "Save" and a build should start automatically
-
-Did the build stages successfully complete? If not, why? How did you resolve the issue?  What did each stage do?
 
 7. After successfully completing the build (provide screenshot of successful build in documentation), download the contents of the repository (the one in your personal GitHub NOT the kuralabs repo!) and upload a zip file of the application it to AWS Elastic Beanstalk.
   
@@ -125,3 +70,11 @@ Did the build stages successfully complete? If not, why? How did you resolve the
 	f. A "CONCLUSION" statement as well as any other sections you feel like you want to include.
 
 The README.md is a markdown file that has unique formatting.  Be sure to look up how to write in markdown or use a txt to markdown converter. 
+
+
+<img width="1506" alt="Screenshot 2024-07-28 at 12 42 49 AM" src="https://github.com/user-attachments/assets/6271bf7b-3d76-44a9-a9a6-f884181c3d0e">
+
+
+
+
+
